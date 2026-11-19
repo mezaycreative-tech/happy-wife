@@ -1477,7 +1477,7 @@ function drawQuiz(){
     return '<button class="quiz-opt '+(on?'on':'')+'" onclick="quizPick('+JSON.stringify(v).replace(/"/g,'&quot;')+')">'+esc(l)+'</button>';
   }).join('');
   document.getElementById('quizNext').style.display = q.multi ? '' : 'none';
-  document.getElementById('quizBack').style && 0;
+  
   const back=document.querySelector('.quiz-back');
   if(back) back.style.visibility = quizAt===0 ? 'hidden' : 'visible';
 }
@@ -2887,7 +2887,7 @@ if("serviceWorker" in navigator){
       because they are genuinely either/or.
    */
 (function(){
-  var LOCAL = 'hw-profile';
+  var LOCAL = 'hw-profile'; window.__prof = function(){ if (!state.profile) state.profile = blankProfile(); return state.profile; };
   var MULTI = { stage: true };
 
   function readLocal(){ try { return JSON.parse(localStorage.getItem(LOCAL) || 'null'); } catch(e){ return null; } }
@@ -2899,7 +2899,7 @@ if("serviceWorker" in navigator){
     if (!p) return;
     try {
       if (typeof profile === 'undefined' || !profile) window.profile = {};
-      for (var k in p) if (Object.prototype.hasOwnProperty.call(p, k)) profile[k] = p[k];
+      for (var k in p) if (Object.prototype.hasOwnProperty.call(p, k)) __prof()[k] = p[k];
     } catch(e){}
   }
   restore();
@@ -2909,7 +2909,7 @@ if("serviceWorker" in navigator){
     var origFinish = finishQuiz;
     window.finishQuiz = function(){
       var r = origFinish.apply(this, arguments);
-      try { writeLocal(typeof profile !== 'undefined' ? profile : null); } catch(e){}
+      try { writeLocal(__prof()); } catch(e){}
       return r;
     };
     window.finishQuiz.__kept = true;
@@ -2998,7 +2998,7 @@ if("serviceWorker" in navigator){
   }
   gate(); setTimeout(gate, 400); setTimeout(gate, 1500);
 
-  function answered(){ try { return !!(typeof profile !== 'undefined' && profile && Object.keys(profile).length > 1); } catch(e){ return false; } }
+  function answered(){ try { return !!(__prof().done); } catch(e){ return false; } }
   function dismissed(){ try { return localStorage.getItem(OFF) === '1'; } catch(e){ return false; } }
 
   function onToday(){
@@ -3374,7 +3374,7 @@ nav{
   var TAG = {7:["baby"],8:["baby"],25:["kids"],42:["big"],43:["big"],44:["big"],45:["big"],46:["big"],47:["big"],48:["big"],49:["big"],50:["baby"],51:["baby"],52:["baby"],53:["baby"],54:["baby"],55:["baby"],56:["baby"],57:["kids"],58:["baby"],59:["kids", "big"],60:["baby"],61:["kids"],62:["baby"],63:["kids"],64:["baby"],65:["kids"],66:["baby"],69:["kids"],81:["big"]};
 
   function answers(){
-    try { if (typeof profile !== 'undefined' && profile) return profile; } catch(e){}
+    try { if (window.__prof) return __prof(); } catch(e){}
     try { return JSON.parse(localStorage.getItem('hw-profile') || '{}'); } catch(e){ return {}; }
   }
 

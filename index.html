@@ -2083,7 +2083,7 @@ const LEGAL = {
     title: "Privacy policy",
     body: `<p><em>Last updated: October 2026</em></p>
 <h4>Email</h4>
-<p>If you turn on emails in Settings, your address goes on a list Koli Shema can send to, together with the date you agreed. Turn it off and you come off that list. Every email we send has an unsubscribe link. If you never turn it on, your address is only ever used to sign you in.</p>
+<p>If you turn on emails in Settings, your address goes on a list Mezay Creative can send to, together with the date you agreed. Turn it off and you come off that list. Every email we send has an unsubscribe link. If you never turn it on, your address is only ever used to sign you in.</p>
 <h4>What we collect</h4>
 <p>Only two things: the email address you sign up with, and whatever you choose to enter in the app — which habits you marked done, your streak, your love notes, special dates, gift ideas and custom habits.</p>
 <p>We do not collect your name, phone number, location, contacts or browsing activity. There is no advertising, and nothing follows you from site to site. The app counts visits with GoatCounter, which sets no cookies and does not store your IP address.</p>
@@ -2101,13 +2101,13 @@ const LEGAL = {
 <h4>Changes</h4>
 <p>If this policy changes in a way that matters, we will say so in the app rather than quietly update this page.</p>
 <h4>Contact</h4>
-<p>Questions about your data: momezei@gmail.com</p>`
+<p>Questions about your data: mezaycreative@gmail.com</p>`
   },
   terms: {
     title: "Terms of use",
     body: `<p><em>Last updated: November 2026</em></p>
 <h4>What this is</h4>
-<p>A free tool from Koli Shema for building small daily habits in your marriage. That is all it is.</p>
+<p>A free tool from Mezay Creative for building small daily habits in your marriage. That is all it is.</p>
 <h4>What this is not</h4>
 <p>This is not therapy, counselling, medical advice, or halachic guidance. It is a reminder app. If your marriage is in real difficulty, please speak to a qualified counsellor, a rav, or a trusted professional — an app cannot do that work.</p>
 <h4>Your account</h4>
@@ -2119,7 +2119,7 @@ const LEGAL = {
 <h4>Ending use</h4>
 <p>You can delete your account at any time from Settings. We may suspend accounts that are being used abusively.</p>
 <h4>Contact</h4>
-<p>momezei@gmail.com</p>`
+<p>mezaycreative@gmail.com</p>`
   }
 };
 
@@ -2158,7 +2158,7 @@ async function deleteAccount(){
     localStorage.removeItem('hw-pending');
     if(error){
       await sb.auth.signOut();
-      alert("Your data has been deleted and you've been signed out.\n\nTo remove the login record itself, email momezei@gmail.com and we'll clear it.");
+      alert("Your data has been deleted and you've been signed out.\n\nTo remove the login record itself, email mezaycreative@gmail.com and we'll clear it.");
     } else {
       await sb.auth.signOut();
       alert("Your account and all data have been deleted.");
@@ -3262,7 +3262,7 @@ nav{
    gets something. The subject names the app, and the body starts them off
    rather than leaving a blank page. */
 (function(){
-  var TO = 'momezei@gmail.com';
+  var TO = 'mezaycreative@gmail.com';
   var APP = 'Happy Wife';
   var HOST = 'screen-reminders';
 
